@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Un poco de mi</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f172a, #1e3a8a, #38bdf8);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .contenedor {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .tarjeta {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+            padding: 35px 30px;
+            animation: aparecer 0.6s ease;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #0f172a;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: #1e3a8a;
+        }
+
+        p {
+            font-size: 15px;
+            color: #475569;
+            margin-bottom: 8px;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: #334155;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .galeria img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .galeria img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            border: none;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #2563eb, #0ea5e9);
+            padding: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.25);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 24px rgba(37, 99, 235, 0.35);
+        }
+
+        button a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            display: block;
+        }
+
+        @media (max-width: 480px) {
+            .tarjeta {
+                padding: 25px 20px;
+            }
+
+            h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="contenedor">
+    <div class="tarjeta">
+
+        <h1>Sobre mi...</h1>
+
+        <p>Nombre Completo: <span th:text="${Nombre}"></span></p>
+        <p>Mi edad es: <span th:text="${Edad}"></span></p>
+
+        <h2>Tengo varios pasatiempos pero la mayoría son:</h2>
+        <ul>
+            <li th:each="pas : ${Pasatiempos}" th:text="${pas}"></li>
+        </ul>
+
+        <h2>Algunas de mis locuras</h2>
+
+        <div class="galeria">
+            <img th:src="@{/img001.jpeg}">
+            <img th:src="@{/img002.jpeg}">
+            <img th:src="@{/img003.jpeg}">
+            <img th:src="@{/img004.jpeg}">
+            <img th:src="@{/img005.jpeg}">
+            <img th:src="@{/img006.jpeg}">
+        </div>
+
+        <button>
+            <a th:href="@{/datos}">Ir a Datos</a>
+        </button>
+
+    </div>
+</div>
+</body>
+</html>

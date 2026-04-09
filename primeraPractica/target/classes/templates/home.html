@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inicio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0f172a, #1e3a8a, #38bdf8);
+            padding: 20px;
+        }
+
+        .contenedor {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .tarjeta {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+            padding: 35px 30px;
+            text-align: center;
+            animation: aparecer 0.6s ease;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .titulo {
+            font-size: 30px;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+
+        .subtitulo {
+            font-size: 15px;
+            color: #475569;
+            margin-bottom: 25px;
+        }
+
+        .usuario {
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .acciones {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .boton {
+            display: block;
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: 14px;
+            text-decoration: none;
+            background: linear-gradient(135deg, #2563eb, #0ea5e9);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.25);
+        }
+
+        .boton:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 24px rgba(37, 99, 235, 0.35);
+        }
+
+        .logout {
+            background: linear-gradient(135deg, #dc2626, #ef4444);
+            box-shadow: 0 10px 20px rgba(220, 38, 38, 0.25);
+        }
+
+        .logout:hover {
+            box-shadow: 0 14px 24px rgba(220, 38, 38, 0.35);
+        }
+
+        .logout-btn {
+            width: 100%;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 14px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            background: linear-gradient(135deg, #dc2626, #ef4444);
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .logout-btn:active {
+            transform: scale(0.98);
+        }
+
+        @media (max-width: 480px) {
+            .tarjeta {
+                padding: 28px 22px;
+            }
+
+            .titulo {
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class ="contenedor">
+        <div class ="tarjeta">
+            <h1 class="titulo">Bienvenido</h1>
+            <p class="subtitulo">
+                Hola, <span class="usuario" th:text="${username}"></span>
+            </p>
+
+            <p>Has iniciado sesión correctamente</p>
+
+            <div class="acciones">
+                <a class="boton" th:href="@{/usuario}">Ir a Usuario</a>
+                <a class="boton" th:href="@{/datos}">Ir a Datos</a>
+                <a class="boton" th:href="@{/sobremi}">Ir a Biografia</a>
+
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit" class="logout-btn">
+                        Cerrar sesión
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
