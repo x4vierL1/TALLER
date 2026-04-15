@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${modoEdicion} ? 'Editar Pedido' : 'Nuevo Pedido'"></title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f2f6f9;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #01415B;
+        }
+
+        .campo {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        .acciones {
+            margin-top: 15px;
+        }
+
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-guardar {
+            background-color: #01415B;
+            color: white;
+        }
+
+        .btn-volver {
+            text-decoration: none;
+            margin-left: 10px;
+            background-color: #6c757d;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1 th:text="${modoEdicion} ? 'Editar Pedido' : 'Nuevo Pedido'"></h1>
+
+    <form th:action="${modoEdicion} ? @{/pedido/actualizar/{id}(id=${pedido.idPedido})} : @{/pedido/guardar}"
+          th:object="${pedido}"
+          method="post">
+
+        <!-- ID oculto para edición -->
+        <input type="hidden" th:field="*{idPedido}"/>
+
+        <div class="campo">
+            <label for="fechaPedido">Fecha del Pedido</label>
+            <input type="date" id="fechaPedido" th:field="*{fechaPedido}">
+            <div class="error" th:if="${#fields.hasErrors('fechaPedido')}" th:errors="*{fechaPedido}"></div>
+        </div>
+
+        <div class="campo">
+            <label for="totalPedido">Total del Pedido</label>
+            <input type="number" step="0.01" id="totalPedido" th:field="*{totalPedido}">
+            <div class="error" th:if="${#fields.hasErrors('totalPedido')}" th:errors="*{totalPedido}"></div>
+        </div>
+
+        <div class="campo">
+            <label for="idUsuario">ID Usuario</label>
+            <input type="number" id="idUsuario" th:field="*{idUsuario}">
+            <div class="error" th:if="${#fields.hasErrors('idUsuario')}" th:errors="*{idUsuario}"></div>
+        </div>
+
+        <div class="acciones">
+            <button type="submit"
+                    class="btn btn-guardar"
+                    th:text="${modoEdicion} ? 'Actualizar' : 'Guardar'"></button>
+
+            <a th:href="@{/pedido}" class="btn btn-volver">Volver</a>
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>

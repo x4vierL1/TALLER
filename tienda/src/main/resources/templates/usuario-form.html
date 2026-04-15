@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${modoEdicion} ? 'Editar Usuario' : 'Nuevo Usuario'"></title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f2f6f9;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #01415B;
+        }
+
+        .campo {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        .acciones {
+            margin-top: 15px;
+        }
+
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-guardar {
+            background-color: #01415B;
+            color: white;
+        }
+
+        .btn-volver {
+            text-decoration: none;
+            margin-left: 10px;
+            background-color: #6c757d;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1 th:text="${modoEdicion} ? 'Editar Usuario' : 'Nuevo Usuario'"></h1>
+
+    <form th:action="${modoEdicion} ? @{/usuario/actualizar/{id}(id=${usuario.idUsuario})} : @{/usuario/guardar}"
+          th:object="${usuario}"
+          method="post">
+
+        <input type="hidden" th:field="*{idUsuario}"/>
+
+        <div class="campo">
+            <label>Nombre</label>
+            <input type="text" th:field="*{nombreUsuario}">
+            <div class="error" th:if="${#fields.hasErrors('nombreUsuario')}" th:errors="*{nombreUsuario}"></div>
+        </div>
+
+        <div class="campo">
+            <label>Apellido</label>
+            <input type="text" th:field="*{apellidoUsuario}">
+            <div class="error" th:if="${#fields.hasErrors('apellidoUsuario')}" th:errors="*{apellidoUsuario}"></div>
+        </div>
+
+        <div class="campo">
+            <label>Correo Electrónico</label>
+            <input type="email" th:field="*{correo}">
+            <div class="error" th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></div>
+        </div>
+
+        <div class="campo">
+            <label>Contraseña</label>
+            <input type="password" th:field="*{password}">
+            <div class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+        </div>
+
+        <div class="acciones">
+            <button type="submit" class="btn btn-guardar" th:text="${modoEdicion} ? 'Actualizar' : 'Guardar'"></button>
+            <a th:href="@{/usuario}" class="btn btn-volver">Volver</a>
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>

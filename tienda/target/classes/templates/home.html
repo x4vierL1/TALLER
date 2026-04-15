@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at top, #1a1a40, #0f0f1a);
+            overflow: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: #8e44ad;
+            filter: blur(130px);
+            top: -120px;
+            left: -120px;
+            opacity: 0.4;
+        }
+
+        body::after {
+            content: "";
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: #3498db;
+            filter: blur(130px);
+            bottom: -120px;
+            right: -120px;
+            opacity: 0.4;
+        }
+
+        .contenedor {
+            width: 100%;
+            max-width: 700px;
+            z-index: 1;
+        }
+
+        .tarjeta {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 18px;
+            padding: 35px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            text-align: center;
+        }
+
+        .titulo {
+            font-size: 32px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .subtitulo {
+            font-size: 15px;
+            color: #cfcfcf;
+            margin-bottom: 20px;
+        }
+
+        .usuario {
+            color: #8e44ad;
+            font-weight: bold;
+        }
+
+        .mensaje {
+            font-size: 14px;
+            color: #aaa;
+            margin-bottom: 25px;
+        }
+
+        .acciones {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .boton {
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 10px;
+            color: #eaeaea;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.3s;
+
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+        }
+
+        .boton:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .logout-btn {
+            width: 100%;
+            margin-top: 18px;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #e74c3c, #c0392b);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .logout-btn:hover {
+            transform: scale(1.03);
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="contenedor">
+    <div class="tarjeta">
+
+        <h1 class="titulo">Bienvenido</h1>
+
+        <p class="subtitulo">
+            Hola, <span class="usuario" th:text="${username}"></span>
+        </p>
+
+        <p class="mensaje">Has iniciado sesión correctamente</p>
+
+        <div class="acciones">
+            <a class="boton" th:href="@{/categoria}">Categorías</a>
+            <a class="boton" th:href="@{/detallepedido}">Detalle Pedido</a>
+            <a class="boton" th:href="@{/pedido}">Pedidos</a>
+            <a class="boton" th:href="@{/producto}">Productos</a>
+            <a class="boton" th:href="@{/usuario}">Usuarios</a>
+        </div>
+
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="logout-btn">
+                Cerrar sesión
+            </button>
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>

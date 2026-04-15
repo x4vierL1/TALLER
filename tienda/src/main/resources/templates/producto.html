@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Productos</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #141e30, #243b55);
+            min-height: 100vh;
+            padding: 30px;
+        }
+
+        .contenedor {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .tarjeta {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+            border-top: 6px solid #16a085;
+        }
+
+        .titulo {
+            font-size: 26px;
+            margin-bottom: 20px;
+            color: #16a085;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .acciones {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* BOTONES UNIFICADOS */
+        .btn {
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: 0.25s ease;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.95;
+        }
+
+        /* estilos más sobrios */
+        .agregar {
+            background: linear-gradient(90deg, #16a085, #1abc9c);
+        }
+
+        .editar {
+            background: linear-gradient(90deg, #2980b9, #3498db);
+            margin-left: 20px;
+        }
+
+        .eliminar {
+            background: linear-gradient(90deg, #c0392b, #e74c3c);
+            margin-left: 5px;
+        }
+
+        .home {
+            background: #2c3e50;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        thead {
+            background: #16a085;
+            color: white;
+        }
+
+        th {
+            padding: 14px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        td {
+            padding: 12px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #f4f6f7;
+        }
+
+        tbody tr:hover {
+            background: #e8f8f5;
+        }
+
+        .precio {
+            font-weight: bold;
+            color: #16a085;
+        }
+
+        .stock {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="contenedor">
+    <div class="tarjeta">
+
+        <h2 class="titulo">Gestión de Productos</h2>
+
+        <!-- BOTONES SUPERIORES -->
+        <div class="acciones">
+            <a th:href="@{/producto/nuevo}" class="btn agregar">Agregar Producto</a>
+            <a th:href="@{/home}" class="btn home">Volver a Home</a>
+        </div>
+
+        <!-- TABLA -->
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>ID Categoría</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="producto : ${productos}">
+                <td th:text="${producto.idProducto}"></td>
+                <td th:text="${producto.nombreProducto}"></td>
+                <td class="precio" th:text="'Q' + ${producto.precioProducto}"></td>
+                <td class="stock" th:text="${producto.stockProducto}"></td>
+                <td th:text="${producto.idCategoria}"></td>
+                <td>
+                    <a th:href="@{/producto/editar/{id}(id=${producto.idProducto})}"
+                       class="btn editar">Editar</a>
+
+                    <a th:href="@{/producto/eliminar/{id}(id=${producto.idProducto})}"
+                       class="btn eliminar"
+                       onclick="return confirm('¿Seguro que quieres eliminar este producto?')">
+                        Eliminar
+                    </a>
+                </td>
+            </tr>
+            <tr th:if="${productos.empty}">
+                <td colspan="6" style="text-align: center; padding: 20px;">
+                    No hay productos registrados
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>

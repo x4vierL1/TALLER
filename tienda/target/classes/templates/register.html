@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registro</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #141e30, #243b55);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contenedor {
+            width: 100%;
+            max-width: 420px;
+            padding: 20px;
+        }
+
+        .tarjeta {
+            background: #ffffff;
+            padding: 32px;
+            border-radius: 14px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+            border-top: 6px solid #16a085;
+            text-align: center;
+        }
+
+        .titulo {
+            font-size: 28px;
+            color: #16a085;
+            margin-bottom: 6px;
+        }
+
+        .subtitulo {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 22px;
+        }
+
+        .campo {
+            text-align: left;
+            margin-bottom: 14px;
+        }
+
+        .campo label {
+            display: block;
+            font-size: 13px;
+            color: #333;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .campo input {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #d0d0d0;
+            border-radius: 7px;
+            outline: none;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+
+        .campo input:focus {
+            border-color: #16a085;
+            box-shadow: 0 0 6px rgba(22, 160, 133, 0.4);
+        }
+
+        .error {
+            color: #e74c3c;
+            font-size: 12px;
+            margin-top: 4px;
+            display: block;
+        }
+
+        .boton {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, #16a085, #2980b9);
+            border: none;
+            border-radius: 7px;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .boton:hover {
+            opacity: 0.92;
+            transform: scale(1.02);
+        }
+
+        .enlace {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .enlace a {
+            color: #16a085;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .enlace a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="contenedor">
+    <div class="tarjeta">
+
+        <h2 class="titulo">Registro</h2>
+        <p class="subtitulo">Crea tu cuenta</p>
+
+        <form th:action="@{/register}" th:object="${usuario}" method="post">
+
+            <div class="campo">
+                <label>Nombre de Usuario</label>
+                <input type="text" th:field="*{nombreUsuario}" required>
+                <div class="error" th:if="${#fields.hasErrors('nombreUsuario')}" th:errors="*{nombreUsuario}"></div>
+                <div class="error" th:if="${errorNombre}" th:text="${errorNombre}"></div>
+            </div>
+
+            <div class="campo">
+                <label>Apellido</label>
+                <input type="text" th:field="*{apellidoUsuario}" required>
+                <div class="error" th:if="${#fields.hasErrors('apellidoUsuario')}" th:errors="*{apellidoUsuario}"></div>
+            </div>
+
+            <div class="campo">
+                <label>Correo Electrónico</label>
+                <input type="email" th:field="*{correo}" required>
+                <div class="error" th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></div>
+                <div class="error" th:if="${errorCorreo}" th:text="${errorCorreo}"></div>
+            </div>
+
+            <div class="campo">
+                <label>Contraseña</label>
+                <input type="password" th:field="*{password}" required>
+                <div class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+            </div>
+
+            <button type="submit" class="boton">Registrarse</button>
+
+            <div class="enlace">
+                ¿Ya tienes cuenta? <a th:href="@{/login}">Inicia sesión aquí</a>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>
