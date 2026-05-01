@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario Cliente</title>
+
+  <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background: linear-gradient(135deg, #020617, #0f172a);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #e2e8f0;
+    }
+
+    .card {
+        background: rgba(15, 23, 42, 0.95);
+        border: 1px solid #1e293b;
+        backdrop-filter: blur(10px);
+        padding: 30px;
+        border-radius: 18px;
+        width: 450px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+
+    .title {
+        font-size: 24px;
+        color: #38bdf8;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .grupo {
+        margin-bottom: 15px;
+    }
+
+    label {
+        font-size: 13px;
+        display: block;
+        margin-bottom: 5px;
+        color: #94a3b8;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #334155;
+        background: #020617;
+        color: white;
+    }
+
+    input:focus {
+        outline: none;
+        border-color: #38bdf8;
+    }
+
+    .error {
+        color: #f87171;
+        font-size: 12px;
+    }
+
+    .acciones {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .btn {
+        padding: 10px 15px;
+        border-radius: 8px;
+        border: none;
+        color: white;
+        cursor: pointer;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .guardar {
+        background: linear-gradient(135deg, #059669, #047857);
+    }
+
+    .cancelar {
+        background: #334155;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <div class="title" th:text="${modoEdicion} ? 'Editar Cliente' : 'Nuevo Cliente'"></div>
+
+  <form th:action="${modoEdicion} ?
+            @{/clientes/actualizar/{id}(id=${cliente.dpiCliente})} :
+            @{/clientes/guardar}"
+        th:object="${cliente}" method="post">
+
+    <div class="grupo">
+      <label>DPI</label>
+      <input type="number" th:field="*{dpiCliente}" placeholder="Ingrese DPI">
+      <div class="error" th:if="${#fields.hasErrors('dpiCliente')}" th:errors="*{dpiCliente}"></div>
+    </div>
+
+    <div class="grupo">
+      <label>Nombre</label>
+      <input type="text" th:field="*{nombreCliente}" placeholder="Ingrese nombre">
+      <div class="error" th:if="${#fields.hasErrors('nombreCliente')}" th:errors="*{nombreCliente}"></div>
+    </div>
+
+    <div class="grupo">
+      <label>Apellido</label>
+      <input type="text" th:field="*{apellidoCliente}" placeholder="Ingrese apellido">
+      <div class="error" th:if="${#fields.hasErrors('apellidoCliente')}" th:errors="*{apellidoCliente}"></div>
+    </div>
+
+    <div class="grupo">
+      <label>Dirección</label>
+      <input type="text" th:field="*{direccion}" placeholder="Ingrese dirección">
+      <div class="error" th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></div>
+    </div>
+
+    <div class="grupo">
+      <label>Estado</label>
+      <select th:field="*{estado}">
+        <option value="">Seleccione</option>
+        <option th:value="true">Activo</option>
+        <option th:value="false">Inactivo</option>
+      </select>
+      <div class="error" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"></div>
+    </div>
+
+    <div class="acciones">
+      <button type="submit" class="btn guardar">Guardar</button>
+      <a href="/clientes" class="btn cancelar">Cancelar</a>
+    </div>
+
+  </form>
+
+</div>
+
+</body>
+</html>

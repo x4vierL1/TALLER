@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario Detalle Venta</title>
+
+  <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background: linear-gradient(135deg, #020617, #0f172a);
+        min-height: 100vh;
+        padding: 30px;
+        color: #e2e8f0;
+    }
+
+    .contenedor {
+        max-width: 600px;
+        margin: auto;
+    }
+
+    .tarjeta {
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid #1e293b;
+        backdrop-filter: blur(12px);
+        padding: 30px;
+        border-radius: 18px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+
+    .titulo {
+        font-size: 24px;
+        color: #38bdf8;
+        font-weight: bold;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #1e293b;
+        padding-bottom: 10px;
+        text-align: center;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    label {
+        font-size: 13px;
+        color: #94a3b8;
+    }
+
+    input {
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #334155;
+        background: #020617;
+        color: white;
+    }
+
+    input:focus {
+        outline: none;
+        border-color: #38bdf8;
+    }
+
+    .botones {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .btn {
+        padding: 10px 16px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: 0.25s ease;
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+        opacity: 0.95;
+    }
+
+    .guardar {
+        background: linear-gradient(135deg, #059669, #047857);
+    }
+
+    .volver {
+        background: #334155;
+    }
+
+    .error {
+        color: #f87171;
+        font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="contenedor">
+  <div class="tarjeta">
+
+    <div class="titulo"
+         th:text="${modoEdicion} ? 'Editar Detalle de Venta' : 'Nuevo Detalle de Venta'">
+    </div>
+
+    <form th:action="@{${modoEdicion} ? '/detalleventa/actualizar/' + ${detalleVenta.codigoDetalleVenta} : '/detalleventa/guardar'}"
+          th:object="${detalleVenta}"
+          method="post">
+
+      <!-- CANTIDAD -->
+      <label>Cantidad</label>
+      <input type="number" th:field="*{cantidad}">
+      <div class="error" th:if="${#fields.hasErrors('cantidad')}" th:errors="*{cantidad}"></div>
+
+      <!-- PRECIO -->
+      <label>Precio Unitario</label>
+      <input type="number" step="0.01" th:field="*{precioUnitario}">
+      <div class="error" th:if="${#fields.hasErrors('precioUnitario')}" th:errors="*{precioUnitario}"></div>
+
+      <!-- SUBTOTAL (MANUAL) -->
+      <label>Subtotal</label>
+      <input type="number" step="0.01" th:field="*{subtotal}">
+      <div class="error" th:if="${#fields.hasErrors('subtotal')}" th:errors="*{subtotal}"></div>
+
+      <!-- PRODUCTO -->
+      <label>Código Producto</label>
+      <input type="number" th:field="*{productosCodigoProducto}">
+      <div class="error" th:if="${#fields.hasErrors('productosCodigoProducto')}" th:errors="*{productosCodigoProducto}"></div>
+
+      <!-- VENTA -->
+      <label>Código Venta</label>
+      <input type="number" th:field="*{ventasCodigoVenta}">
+      <div class="error" th:if="${#fields.hasErrors('ventasCodigoVenta')}" th:errors="*{ventasCodigoVenta}"></div>
+
+      <div class="botones">
+        <button type="submit" class="btn guardar"
+                th:text="${modoEdicion} ? 'Actualizar' : 'Guardar'">
+        </button>
+
+        <a href="/detalleventa" class="btn volver">Volver</a>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+</body>
+</html>

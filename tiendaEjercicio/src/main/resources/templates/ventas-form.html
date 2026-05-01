@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Venta</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #0f172a;
+            color: white;
+            padding: 30px;
+        }
+
+        .formulario {
+            max-width: 500px;
+            margin: auto;
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .btn {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #22c55e;
+            color: white;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #16a34a;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="formulario">
+
+    <h2 th:text="${modoEdicion} ? 'Editar Venta' : 'Nueva Venta'"></h2>
+
+    <form th:action="${modoEdicion} ? @{'/ventas/actualizar/' + ${venta.codigoVenta}} : @{/ventas/guardar}"
+          th:object="${venta}"
+          method="post">
+
+        <!-- FECHA -->
+        <label>Fecha</label>
+        <input type="date" th:field="*{fechaVenta}" />
+
+        <!-- TOTAL -->
+        <label>Total</label>
+        <input type="number" step="0.01" th:field="*{total}" />
+        <div th:if="${#fields.hasErrors('total')}" th:errors="*{total}"></div>
+
+        <!-- ESTADO -->
+        <label>Estado</label>
+        <select th:field="*{estado}">
+            <option value="">Seleccione</option>
+            <option value="true">Activo</option>
+            <option value="false">Inactivo</option>
+        </select>
+        <div th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"></div>
+
+        <!-- DPI CLIENTE -->
+        <label>DPI Cliente</label>
+        <input type="number" th:field="*{clientesDpiCliente}" />
+        <div th:if="${#fields.hasErrors('clientesDpiCliente')}" th:errors="*{clientesDpiCliente}"></div>
+
+        <!-- CODIGO USUARIO -->
+        <label>Código Usuario</label>
+        <input type="number" th:field="*{usuariosCodigoUsuario}" />
+        <div th:if="${#fields.hasErrors('usuariosCodigoUsuario')}" th:errors="*{usuariosCodigoUsuario}"></div>
+
+        <button type="submit" class="btn">Guardar</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

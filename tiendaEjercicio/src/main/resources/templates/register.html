@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0f1c, #111827);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #e5e7eb;
+        }
+
+        .contenedor {
+            width: 100%;
+            max-width: 420px;
+            padding: 20px;
+        }
+
+        .tarjeta {
+            background: #1f2937;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+            text-align: center;
+            border: 1px solid #374151;
+        }
+
+        .titulo {
+            font-size: 24px;
+            color: #f9fafb;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .subtitulo {
+            font-size: 13px;
+            color: #9ca3af;
+            margin-bottom: 25px;
+        }
+
+        .campo {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        .campo label {
+            display: block;
+            font-size: 12px;
+            color: #d1d5db;
+            margin-bottom: 5px;
+        }
+
+        .campo input,
+        .campo select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            background: #111827;
+            color: #f9fafb;
+            outline: none;
+        }
+
+        .campo input:focus,
+        .campo select:focus {
+            border-color: #6b7280;
+            box-shadow: 0 0 5px rgba(107, 114, 128, 0.4);
+        }
+
+        .boton {
+            width: 100%;
+            padding: 12px;
+            background: #374151;
+            border: none;
+            border-radius: 8px;
+            color: #f9fafb;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .boton:hover {
+            background: #4b5563;
+        }
+
+        .link {
+            display: block;
+            margin-top: 15px;
+            font-size: 12px;
+            color: #9ca3af;
+            text-decoration: none;
+        }
+
+        .link:hover {
+            color: #e5e7eb;
+        }
+
+        .error {
+            color: #f87171;
+            font-size: 11px;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="contenedor">
+    <div class="tarjeta">
+        <h2 class="titulo">Registro</h2>
+        <p class="subtitulo">Crea tu cuenta para continuar</p>
+
+        <form th:action="@{/register}" th:object="${usuario}" method="post">
+
+            <div class="campo">
+                <label>Usuario</label>
+                <input type="text" th:field="*{username}" required minlength="2" maxlength="45">
+                <div class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+            </div>
+
+            <div class="campo">
+                <label>Contraseña</label>
+                <input type="password" th:field="*{password}" required minlength="6">
+                <div class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+            </div>
+
+            <div class="campo">
+                <label>Correo</label>
+                <input type="email" th:field="*{email}" required maxlength="60">
+                <div class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+            </div>
+
+            <!-- ROL CORREGIDO -->
+            <div class="campo">
+                <label>Rol</label>
+                <select th:field="*{rol}" required>
+                    <option value="">Seleccione</option>
+                    <option value="USER">USUARIO</option>
+                    <option value="ADMIN">ADMIN</option>
+                </select>
+                <div class="error" th:if="${#fields.hasErrors('rol')}" th:errors="*{rol}"></div>
+            </div>
+
+            <div class="campo">
+                <label>Estado</label>
+                <select th:field="*{estado}" required>
+                    <option value="">Seleccione</option>
+                    <option th:value="true">Activo</option>
+                    <option th:value="false">Inactivo</option>
+                </select>
+                <div class="error" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"></div>
+            </div>
+
+            <button type="submit" class="boton">Registrar</button>
+
+        </form>
+
+        <a class="link" th:href="@{/login}">¿Ya tienes cuenta? Inicia sesión</a>
+    </div>
+</div>
+
+</body>
+</html>

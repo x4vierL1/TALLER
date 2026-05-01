@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home</title>
+
+  <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background: linear-gradient(135deg, #020617, #0f172a);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        color: #e2e8f0;
+    }
+
+    .contenedor {
+        width: 100%;
+        max-width: 850px;
+    }
+
+    .tarjeta {
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid #1e293b;
+        backdrop-filter: blur(12px);
+        padding: 40px;
+        border-radius: 18px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        text-align: center;
+    }
+
+    .titulo {
+        font-size: 32px;
+        color: #f1f5f9;
+        margin-bottom: 10px;
+    }
+
+    .subtitulo {
+        font-size: 15px;
+        color: #94a3b8;
+        margin-bottom: 10px;
+    }
+
+    .usuario {
+        font-weight: bold;
+        color: #38bdf8;
+    }
+
+    .mensaje {
+        font-size: 14px;
+        color: #60a5fa;
+        margin-bottom: 25px;
+    }
+
+    .acciones {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 12px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .boton {
+        display: block;
+        text-decoration: none;
+        padding: 12px;
+        background: linear-gradient(135deg, #1e3a8a, #2563eb);
+        color: #f1f5f9;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: bold;
+        transition: 0.25s;
+        border: 1px solid #1d4ed8;
+    }
+
+    .boton:hover {
+        background: linear-gradient(135deg, #1d4ed8, #1e40af);
+        transform: translateY(-2px);
+        box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+    }
+
+    .logout-btn {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(135deg, #7f1d1d, #b91c1c);
+        border: 1px solid #dc2626;
+        border-radius: 10px;
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.25s;
+        margin-top: 15px;
+    }
+
+    .logout-btn:hover {
+        background: linear-gradient(135deg, #991b1b, #7f1d1d);
+        transform: translateY(-2px);
+        box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
+    }
+
+    form {
+        margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="contenedor">
+  <div class="tarjeta">
+    <h1 class="titulo">Bienvenido</h1>
+
+    <p class="subtitulo">
+      Hola, <span class="usuario" th:text="${username}">usuario</span>
+      con rol: <span class="usuario" th:text="${rol}">rol</span>
+    </p>
+
+    <p class="mensaje">Has iniciado sesión correctamente</p>
+
+    <div class="acciones">
+      <a th:href="@{/usuarios}" class="boton">Usuarios</a>
+      <a th:href="@{/detalleventa}" class="boton">Detalle Venta</a>
+      <a th:href="@{/productos}" class="boton">Productos</a>
+      <a th:href="@{/clientes}" class="boton">Clientes</a>
+      <a th:href="@{/ventas}" class="boton">Ventas</a>
+    </div>
+
+    <form th:action="@{/logout}" method="post">
+      <button type="submit" class="logout-btn">
+        Cerrar sesión
+      </button>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>

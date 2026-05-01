@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Usuarios</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #020617, #0f172a);
+            min-height: 100vh;
+            padding: 30px;
+            color: #e2e8f0;
+        }
+
+        .contenedor {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .tarjeta {
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid #1e293b;
+            backdrop-filter: blur(12px);
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .titulo {
+            font-size: 26px;
+            color: #38bdf8;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #1e293b;
+            padding-bottom: 10px;
+        }
+
+        .acciones {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: 0.25s ease;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.95;
+        }
+
+        .eliminar {
+            background: linear-gradient(135deg, #b91c1c, #7f1d1d);
+        }
+
+        .home {
+            background: #334155;
+        }
+
+        .tabla-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        thead {
+            background: #1e293b;
+        }
+
+        th {
+            padding: 14px;
+            text-align: left;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #94a3b8;
+        }
+
+        td {
+            padding: 12px;
+            font-size: 14px;
+        }
+
+        tbody tr:nth-child(even) {
+            background: rgba(30, 41, 59, 0.5);
+        }
+
+        tbody tr:hover {
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .acciones-tabla {
+            display: flex;
+            gap: 8px;
+        }
+
+        .eliminar-tabla {
+            background: linear-gradient(135deg, #b91c1c, #7f1d1d);
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="contenedor">
+    <div class="tarjeta">
+
+        <h2 class="titulo">Gestión de Usuarios</h2>
+
+        <div class="acciones">
+            <a th:href="@{/home}" class="btn home">Home</a>
+        </div>
+
+        <div class="tabla-wrapper">
+            <table th:if="${usuarios != null and !usuarios.isEmpty()}">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>USERNAME</th>
+                    <th>PASSWORD</th>
+                    <th>EMAIL</th>
+                    <th>ROL</th>
+                    <th>ESTADO</th>
+                    <th>ACCIONES</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="usuario : ${usuarios}">
+                    <td th:text="${usuario.codigoUsuario}"></td>
+                    <td th:text="${usuario.username}"></td>
+                    <td th:text="${usuario.password}"></td>
+                    <td th:text="${usuario.email}"></td>
+                    <td th:text="${usuario.rol}"></td>
+                    <td th:text="${usuario.estado}"></td>
+                    <td class="acciones-tabla">
+                        <a th:href="@{/usuarios/eliminar/{id}(id=${usuario.codigoUsuario})}"
+                           class="btn eliminar eliminar-tabla"
+                           onclick="return confirm('¿Seguro que quieres eliminar este usuario?')">
+                            Eliminar
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

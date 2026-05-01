@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Detalle Venta</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #020617, #0f172a);
+            min-height: 100vh;
+            padding: 30px;
+            color: #e2e8f0;
+        }
+
+        .contenedor {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .tarjeta {
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid #1e293b;
+            backdrop-filter: blur(12px);
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+
+        .titulo {
+            font-size: 26px;
+            margin-bottom: 20px;
+            color: #38bdf8;
+            border-bottom: 1px solid #1e293b;
+            padding-bottom: 10px;
+        }
+
+        .acciones {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 10px 18px;
+            border-radius: 8px;
+            color: #f1f5f9;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            transition: 0.25s;
+            border: 1px solid transparent;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.95;
+        }
+
+        .agregar {
+            background: linear-gradient(135deg, #059669, #047857);
+            border-color: #10b981;
+        }
+
+        .editar {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            border-color: #3b82f6;
+        }
+
+        .eliminar {
+            background: linear-gradient(135deg, #b91c1c, #7f1d1d);
+            border-color: #ef4444;
+        }
+
+        .home {
+            background: linear-gradient(135deg, #334155, #1e293b);
+            border-color: #475569;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        thead {
+            background: #1e293b;
+        }
+
+        th {
+            padding: 14px;
+            text-align: left;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #94a3b8;
+        }
+
+        td {
+            padding: 12px;
+            font-size: 14px;
+            text-align: center;
+            color: #e2e8f0;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #1e293b;
+        }
+
+        tbody tr:nth-child(even) {
+            background: rgba(30, 41, 59, 0.5);
+        }
+
+        tbody tr:hover {
+            background: rgba(59, 130, 246, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="contenedor">
+    <div class="tarjeta">
+
+        <h2 class="titulo">Gestión de Detalle Venta</h2>
+
+        <div class="acciones">
+            <a th:href="@{/detalleventa/nuevo}" class="btn agregar">Agregar</a>
+            <a th:href="@{/home}" class="btn home">Volver a Home</a>
+        </div>
+
+        <table th:if="${detalles != null and !detalles.isEmpty()}">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Subtotal</th>
+                <th>ID Venta</th>
+                <th>ID Producto</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="detalle : ${detalles}">
+                <td th:text="${detalle.codigoDetalleVenta}"></td>
+                <td th:text="${detalle.cantidad}"></td>
+                <td th:text="${detalle.precioUnitario}"></td>
+                <td th:text="${detalle.subtotal}"></td>
+                <td th:text="${detalle.ventasCodigoVenta}"></td>
+                <td th:text="${detalle.productosCodigoProducto}"></td>
+
+                <td>
+                    <a th:href="@{/detalleventa/editar/{id}(id=${detalle.codigoDetalleVenta})}"
+                       class="btn editar">Editar</a>
+
+                    <a th:href="@{/detalleventa/eliminar/{id}(id=${detalle.codigoDetalleVenta})}"
+                       class="btn eliminar"
+                       onclick="return confirm('¿Seguro que quieres eliminar este registro?')">
+                        Eliminar
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>

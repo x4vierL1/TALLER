@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>clientes</title>
+
+  <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background: linear-gradient(135deg, #020617, #0f172a);
+        min-height: 100vh;
+        padding: 30px;
+        color: #e2e8f0;
+    }
+
+    .contenedor {
+        max-width: 1100px;
+        margin: auto;
+    }
+
+    .tarjeta {
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid #1e293b;
+        backdrop-filter: blur(12px);
+        padding: 30px;
+        border-radius: 18px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+
+    .titulo {
+        font-size: 26px;
+        color: #38bdf8;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #1e293b;
+        padding-bottom: 10px;
+    }
+
+    .acciones {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        padding: 10px 16px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: 0.25s ease;
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+        opacity: 0.95;
+    }
+
+    .agregar {
+        background: linear-gradient(135deg, #059669, #047857);
+    }
+
+    .editar {
+        background: linear-gradient(135deg, #2563eb, #1e40af);
+    }
+
+    .eliminar {
+        background: linear-gradient(135deg, #b91c1c, #7f1d1d);
+    }
+
+    .home {
+        background: #334155;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    thead {
+        background: #1e293b;
+    }
+
+    th {
+        padding: 14px;
+        text-align: left;
+        font-size: 12px;
+        text-transform: uppercase;
+        color: #94a3b8;
+    }
+
+    td {
+        padding: 12px;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    tbody tr:nth-child(even) {
+        background: rgba(30, 41, 59, 0.5);
+    }
+
+    tbody tr:hover {
+        background: rgba(59, 130, 246, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="contenedor">
+  <div class="tarjeta">
+
+    <h2 class="titulo">Gestión de clientes</h2>
+
+    <div class="acciones">
+      <a th:href="@{/clientes/nuevo}" class="btn agregar">Agregar cliente</a>
+      <a th:href="@{/home}" class="btn home">Home</a>
+    </div>
+
+    <table th:if="${clientes != null and !clientes.isEmpty()}">
+      <thead>
+      <tr>
+        <th>DPI cliente</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Dirección</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr th:each="cliente : ${clientes}">
+        <td th:text="${cliente.dpiCliente}"></td>
+        <td th:text="${cliente.nombreCliente}"></td>
+        <td th:text="${cliente.apellidoCliente}"></td>
+        <td th:text="${cliente.direccion}"></td>
+        <td th:text="${cliente.estado}"></td>
+
+        <td>
+          <a th:href="@{/clientes/editar/{id}(id=${cliente.dpiCliente})}"
+             class="btn editar">Editar</a>
+
+          <a th:href="@{/clientes/eliminar/{id}(id=${cliente.dpiCliente})}"
+             class="btn eliminar"
+             onclick="return confirm('¿Seguro que quieres eliminar este cliente?')">
+            Eliminar
+          </a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+</body>
+</html>
