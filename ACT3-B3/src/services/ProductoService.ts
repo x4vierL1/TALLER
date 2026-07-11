@@ -1,34 +1,53 @@
-import { Producto } from "../models/Producto";
+import { Cliente } from "../models/Cliente";
 
-export class ProductoService {
+export class ClienteService {
 
-    productos: Producto[] = [];
+    clientes: Cliente[] = [];
 
-    agregar(producto: Producto) {
-        this.productos.push(producto);
+    agregar(cliente: Cliente) {
+        try {
+            this.clientes.push(cliente);
+        } catch (error) {
+            console.log("Error al agregar el cliente.");
+        }
     }
 
     listar() {
-        return this.productos;
+        try {
+            return this.clientes;
+        } catch (error) {
+            console.log("Error al listar los clientes.");
+            return [];
+        }
     }
 
     buscar(id: number) {
-        return this.productos.find(producto => producto.id === id);
+        try {
+            return this.clientes.find(cliente => cliente.id === id);
+        } catch (error) {
+            console.log("Error al buscar el cliente.");
+        }
     }
 
-    editar(id: number, nombre: string, precio: number) {
+    editar(id: number, nombre: string, telefono: string) {
+        try {
+            const cliente = this.buscar(id);
 
-        const producto = this.buscar(id);
-
-        if (producto) {
-            producto.nombre = nombre;
-            producto.precio = precio;
+            if (cliente) {
+                cliente.nombre = nombre;
+                cliente.telefono = telefono;
+            }
+        } catch (error) {
+            console.log("Error al editar el cliente.");
         }
-
     }
 
     eliminar(id: number) {
-        this.productos = this.productos.filter(producto => producto.id !== id);
+        try {
+            this.clientes = this.clientes.filter(cliente => cliente.id !== id);
+        } catch (error) {
+            console.log("Error al eliminar el cliente.");
+        }
     }
 
 }
