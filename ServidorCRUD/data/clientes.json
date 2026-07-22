@@ -1,0 +1,11 @@
+[
+  {
+    "id": 2,
+    "nombre": "Carlos",
+    "apellido": "Lopez",
+    "correo": "carlos@gmail.com",
+    "telefono": "44444444",
+    "direccion": "Zona 5",
+    "estado": "Activo"
+  }
+]
