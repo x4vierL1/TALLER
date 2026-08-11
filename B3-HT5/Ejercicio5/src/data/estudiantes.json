@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "nombre": "Rodolfo",
+        "apellido": "Garcia",
+        "email": "rodo@gmail.com",
+        "telefono": "42222222",
+        "direccion": "Zona 2"
+    },
+    {
+        "id": 2,
+        "nombre": "Carla",
+        "apellido": "Perez",
+        "email": "carla@gmail.com",
+        "telefono": "44444444",
+        "direccion": "Zona 10"
+    },
+    {
+        "id": 3,
+        "nombre": "Carlos",
+        "apellido": "Perez",
+        "email": "carlos@gmail.com",
+        "telefono": "55555556",
+        "direccion": "Zona 2"
+    }
+]

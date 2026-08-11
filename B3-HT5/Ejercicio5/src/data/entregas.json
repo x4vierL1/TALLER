@@ -1,0 +1,9 @@
+[
+    {
+        "id": 1,
+        "actividadId": 1,
+        "estudianteId": 1,
+        "fechaEntrega": "2026-07-28",
+        "archivo": "tarea1.pdf"
+    }
+]

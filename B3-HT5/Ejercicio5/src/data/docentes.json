@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "nombre": "Juan",
+        "apellido": "Martinez",
+        "email": "juan@gmail.com",
+        "telefono": "55555557",
+        "curso": "Programacion",
+        "direccion": "Zona 3"
+    },
+    {
+        "id": 2,
+        "nombre": "Luis",
+        "apellido": "K",
+        "email": "k@gmail.com",
+        "telefono": "23456789",
+        "curso": "Mecanica",
+        "direccion": "Zona 1"
+    }
+]

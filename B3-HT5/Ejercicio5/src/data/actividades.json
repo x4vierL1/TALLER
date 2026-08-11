@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "cursoId": 1,
+        "nombre": "Tarea 1",
+        "descripcion": "Investigacion de APIs",
+        "ponderacion": 20
+    },
+    {
+        "id": 2,
+        "cursoId": 1,
+        "nombre": "Proyecto Final",
+        "descripcion": "Crear una API",
+        "ponderacion": 50
+    },
+    {
+        "id": 3,
+        "cursoId": 1,
+        "nombre": "Examen",
+        "descripcion": "Evaluacion final",
+        "ponderacion": 30
+    }
+]
