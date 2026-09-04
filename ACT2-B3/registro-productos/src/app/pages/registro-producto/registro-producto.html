@@ -1,0 +1,73 @@
+<h2>Registro de Producto</h2>
+
+<form [formGroup]="productoForm" (ngSubmit)="registrarProducto()">
+
+  <label>Nombre:</label>
+  <input type="text" formControlName="nombre">
+
+  <div *ngIf="campo['nombre'].touched && campo['nombre'].invalid">
+    <small *ngIf="campo['nombre'].errors?.['required']">
+      El nombre es obligatorio.
+    </small>
+
+    <small *ngIf="campo['nombre'].errors?.['minlength']">
+      El nombre debe tener al menos 3 caracteres.
+    </small>
+  </div>
+
+
+  <label>Descripción:</label>
+  <textarea formControlName="descripcion"></textarea>
+
+  <div *ngIf="campo['descripcion'].touched && campo['descripcion'].invalid">
+    <small *ngIf="campo['descripcion'].errors?.['required']">
+      La descripción es obligatoria.
+    </small>
+
+    <small *ngIf="campo['descripcion'].errors?.['minlength']">
+      La descripción debe tener al menos 10 caracteres.
+    </small>
+  </div>
+
+
+  <label>Precio:</label>
+  <input type="number" formControlName="precio">
+
+  <div *ngIf="campo['precio'].touched && campo['precio'].invalid">
+    <small *ngIf="campo['precio'].errors?.['required']">
+      El precio es obligatorio.
+    </small>
+
+    <small *ngIf="campo['precio'].errors?.['min']">
+      El precio debe ser mayor a 0.
+    </small>
+  </div>
+
+
+  <label>Categoría:</label>
+  <input type="text" formControlName="categoria">
+
+  <div *ngIf="campo['categoria'].touched && campo['categoria'].invalid">
+    <small *ngIf="campo['categoria'].errors?.['required']">
+      La categoría es obligatoria.
+    </small>
+  </div>
+
+
+  <label>Stock:</label>
+  <input type="number" formControlName="stock">
+
+  <div *ngIf="campo['stock'].touched && campo['stock'].invalid">
+    <small *ngIf="campo['stock'].errors?.['required']">
+      El stock es obligatorio.
+    </small>
+
+    <small *ngIf="campo['stock'].errors?.['min']">
+      El stock no puede ser negativo.
+    </small>
+  </div>
+
+
+  <button type="submit">Registrar Producto</button>
+
+</form>
