@@ -1,0 +1,38 @@
+<h2>Carrito de compras</h2>
+
+<div *ngIf="carrito.length > 0; else carritoVacio">
+
+  <div class="item-carrito" *ngFor="let producto of carrito">
+
+    <h3>{{ producto.nombre }}</h3>
+
+    <p>Precio: Q{{ producto.precio }}</p>
+
+    <p>
+      Subtotal:
+      Q{{ producto.precio | subtotal:producto.cantidad }}
+    </p>
+
+    <label>
+      Cantidad:
+      <input
+        type="number"
+        [value]="producto.cantidad"
+        min="1"
+        (change)="cambiarCantidad(producto, +$any($event.target).value)"
+      >
+    </label>
+
+    <button (click)="eliminarProducto(producto)">
+      Eliminar
+    </button>
+
+  </div>
+
+  <h2>Total: Q{{ calcularTotal() }}</h2>
+
+</div>
+
+<ng-template #carritoVacio>
+  <p>El carrito está vacío.</p>
+</ng-template>
