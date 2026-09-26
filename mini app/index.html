@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Usuarios</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="container">
+        <h1>👥 Lista de Usuarios</h1>
+
+        <div class="controls">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Buscar usuario..."
+            >
+
+            <button id="loadButton">Cargar usuarios</button>
+        </div>
+
+        <p id="status">Presiona el botón para cargar los usuarios.</p>
+
+        <section id="usersContainer" class="users-container"></section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
