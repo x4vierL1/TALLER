@@ -1,0 +1,127 @@
+<header class="navbar">
+  <div class="logo">
+    🐾 <span>Huellitas GT</span>
+  </div>
+
+  <nav>
+    <a routerLink="/">Inicio</a>
+    <a routerLink="/mascotas">Mascotas</a>
+    <a routerLink="/reportes">Reportes</a>
+    <a routerLink="/nosotros">Nosotros</a>
+  </nav>
+
+  <button class="btn-login">
+    Iniciar sesión
+  </button>
+</header>
+
+<div class="mascotas-page">
+
+  <header class="mascotas-header">
+    <div>
+      <p class="eyebrow">🐾 Huellitas GT</p>
+
+      <h1>Encuentra a tu nuevo compañero</h1>
+
+      <p class="subtitle">
+        Conoce mascotas que buscan un hogar responsable
+        y dales una segunda oportunidad.
+      </p>
+    </div>
+  </header>
+
+  <section class="filters">
+
+    <div class="search-box">
+      <input
+        type="text"
+        placeholder="🔎 Buscar por nombre..."
+      />
+    </div>
+
+    <select>
+      <option value="">Todas las especies</option>
+      <option value="perro">Perros</option>
+      <option value="gato">Gatos</option>
+    </select>
+
+    <select>
+      <option value="">Todas las edades</option>
+      <option value="cachorro">Cachorro</option>
+      <option value="joven">Joven</option>
+      <option value="adulto">Adulto</option>
+      <option value="senior">Senior</option>
+    </select>
+
+    <select>
+      <option value="">Todos los tamaños</option>
+      <option value="pequeno">Pequeño</option>
+      <option value="mediano">Mediano</option>
+      <option value="grande">Grande</option>
+    </select>
+
+  </section>
+
+  <section class="pets-section">
+
+    <div class="section-header">
+      <div>
+        <h2>Mascotas disponibles</h2>
+        <p>Encuentra el compañero que está esperando por ti.</p>
+      </div>
+
+      <span class="results-count">6 mascotas</span>
+    </div>
+
+    <div class="pets-grid">
+
+      <article class="pet-card">
+        <div class="pet-image">🐶</div>
+
+        <div class="pet-info">
+          <h3>Max</h3>
+          <p class="pet-details">🐕 Perro · 2 años · Mediano</p>
+
+          <p class="pet-location">
+            📍 Ciudad de Guatemala
+          </p>
+
+          <button>Ver perfil</button>
+        </div>
+      </article>
+
+      <article class="pet-card">
+        <div class="pet-image">🐱</div>
+
+        <div class="pet-info">
+          <h3>Luna</h3>
+          <p class="pet-details">🐈 Gata · 1 año · Pequeña</p>
+
+          <p class="pet-location">
+            📍 Zona 12, Guatemala
+          </p>
+
+          <button>Ver perfil</button>
+        </div>
+      </article>
+
+      <article class="pet-card">
+        <div class="pet-image">🐶</div>
+
+        <div class="pet-info">
+          <h3>Rocky</h3>
+          <p class="pet-details">🐕 Perro · 4 años · Grande</p>
+
+          <p class="pet-location">
+            📍 Zona 7, Guatemala
+          </p>
+
+          <button>Ver perfil</button>
+        </div>
+      </article>
+
+    </div>
+
+  </section>
+
+</div>

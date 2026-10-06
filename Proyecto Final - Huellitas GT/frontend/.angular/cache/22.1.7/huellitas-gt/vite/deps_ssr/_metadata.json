@@ -1,0 +1,80 @@
+{
+  "hash": "429bd182",
+  "configHash": "17d898cf",
+  "lockfileHash": "427a2f1e",
+  "browserHash": "e29c6136",
+  "optimized": {
+    "@angular/core": {
+      "src": "../../../../../../node_modules/.pnpm/@angular+core@22.1.5_@angular+compiler@22.1.5_rxjs@7.8.2/node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "08115661",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../../node_modules/.pnpm/@angular+platform-browser@2_cc1d766d25a6c122c6e40b771c1a643b/node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "864ae55c",
+      "needsInterop": false
+    },
+    "@angular/platform-server/init": {
+      "src": "../../../../../../node_modules/.pnpm/@angular+platform-server@22_f505387afeb8ab5219ea362840c8399f/node_modules/@angular/platform-server/fesm2022/init.mjs",
+      "file": "@angular_platform-server_init.js",
+      "fileHash": "600784f9",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../../node_modules/.pnpm/@angular+router@22.1.5_@ang_777f3fd13e7ffff2f90bc0581d46f09b/node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "ca960d8c",
+      "needsInterop": false
+    },
+    "@angular/ssr": {
+      "src": "../../../../../../node_modules/.pnpm/@angular+ssr@22.1.7_@angula_73ae248124a6a6aae3e9a3b888552755/node_modules/@angular/ssr/fesm2022/ssr.mjs",
+      "file": "@angular_ssr.js",
+      "fileHash": "e963bd1e",
+      "needsInterop": false
+    },
+    "@angular/ssr/node": {
+      "src": "../../../../../../node_modules/.pnpm/@angular+ssr@22.1.7_@angula_73ae248124a6a6aae3e9a3b888552755/node_modules/@angular/ssr/fesm2022/node.mjs",
+      "file": "@angular_ssr_node.js",
+      "fileHash": "a084cbdf",
+      "needsInterop": false
+    },
+    "express": {
+      "src": "../../../../../../node_modules/.pnpm/express@5.2.1/node_modules/express/index.js",
+      "file": "express.js",
+      "fileHash": "c8daab62",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "bundled-domino-DgHL1BAn": {
+      "file": "bundled-domino-DgHL1BAn.js",
+      "isDynamicEntry": false
+    },
+    "core-DEfZ8H2V": {
+      "file": "core-DEfZ8H2V.js",
+      "isDynamicEntry": false
+    },
+    "platform-browser-CrXAASj8": {
+      "file": "platform-browser-CrXAASj8.js",
+      "isDynamicEntry": false
+    },
+    "rolldown-runtime-C7HZzL1F": {
+      "file": "rolldown-runtime-C7HZzL1F.js",
+      "isDynamicEntry": false
+    },
+    "router-Fa72wSEs": {
+      "file": "router-Fa72wSEs.js",
+      "isDynamicEntry": false
+    },
+    "ssr-CX54bMzZ": {
+      "file": "ssr-CX54bMzZ.js",
+      "isDynamicEntry": false
+    },
+    "xhr2-BYNf1wUa": {
+      "file": "xhr2-BYNf1wUa.js",
+      "isDynamicEntry": true
+    }
+  }
+}

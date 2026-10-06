@@ -1,0 +1,187 @@
+<header class="navbar">
+  <div class="logo">
+    🐾 <span>Huellitas GT</span>
+  </div>
+
+  <nav>
+    <a routerLink="/">Inicio</a>
+    <a routerLink="/mascotas">Mascotas</a>
+    <a routerLink="/reportes">Reportes</a>
+    <a routerLink="/nosotros">Nosotros</a>
+  </nav>
+
+  <button class="btn-login">
+    Iniciar sesión
+  </button>
+</header>
+
+<div class="reportes-page">
+
+  <section class="reportes-header">
+
+    <div>
+      <p class="eyebrow">🐾 Ayúdanos a encontrarlos</p>
+
+      <h1>Reportes de mascotas</h1>
+
+      <p class="subtitle">
+        Consulta mascotas perdidas, encontradas o abandonadas
+        y ayuda a reunirlas con sus familias.
+      </p>
+    </div>
+
+    <button class="btn-report">
+      + Crear reporte
+    </button>
+
+  </section>
+
+  <section class="report-types">
+
+    <article class="report-type">
+      <div class="report-icon">🔎</div>
+
+      <div>
+        <h3>Mascota perdida</h3>
+        <p>
+          Reporta una mascota que se perdió y ayuda a encontrarla.
+        </p>
+      </div>
+    </article>
+
+    <article class="report-type">
+      <div class="report-icon">🐾</div>
+
+      <div>
+        <h3>Mascota encontrada</h3>
+        <p>
+          Encontraste una mascota y quieres ayudar a localizar a su dueño.
+        </p>
+      </div>
+    </article>
+
+    <article class="report-type">
+      <div class="report-icon">❤️</div>
+
+      <div>
+        <h3>Mascota abandonada</h3>
+        <p>
+          Reporta una mascota que necesita ayuda o un hogar.
+        </p>
+      </div>
+    </article>
+
+  </section>
+
+  <section class="reports-section">
+
+    <div class="section-header">
+      <div>
+        <h2>Reportes recientes</h2>
+        <p>
+          Conoce los casos publicados recientemente.
+        </p>
+      </div>
+
+      <select>
+        <option value="">Todos los reportes</option>
+        <option value="perdida">Perdidas</option>
+        <option value="encontrada">Encontradas</option>
+        <option value="abandonada">Abandonadas</option>
+      </select>
+    </div>
+
+    <div class="reports-grid">
+
+      <article class="report-card">
+
+        <div class="report-image">
+          🐕
+          <span class="status lost">Perdido</span>
+        </div>
+
+        <div class="report-info">
+          <h3>Max</h3>
+
+          <p class="report-details">
+            🐕 Perro · Macho · Mediano
+          </p>
+
+          <p class="report-location">
+            📍 Zona 10, Ciudad de Guatemala
+          </p>
+
+          <p class="report-date">
+            Reportado hace 2 días
+          </p>
+
+          <button>
+            Ver reporte
+          </button>
+        </div>
+
+      </article>
+
+      <article class="report-card">
+
+        <div class="report-image">
+          🐈
+          <span class="status found">Encontrada</span>
+        </div>
+
+        <div class="report-info">
+          <h3>Gatita encontrada</h3>
+
+          <p class="report-details">
+            🐈 Gata · Hembra · Pequeña
+          </p>
+
+          <p class="report-location">
+            📍 Zona 12, Ciudad de Guatemala
+          </p>
+
+          <p class="report-date">
+            Reportado hace 1 día
+          </p>
+
+          <button>
+            Ver reporte
+          </button>
+        </div>
+
+      </article>
+
+      <article class="report-card">
+
+        <div class="report-image">
+          🐶
+          <span class="status abandoned">Abandonado</span>
+        </div>
+
+        <div class="report-info">
+          <h3>Cachorro abandonado</h3>
+
+          <p class="report-details">
+            🐶 Perro · Macho · Pequeño
+          </p>
+
+          <p class="report-location">
+            📍 Zona 7, Ciudad de Guatemala
+          </p>
+
+          <p class="report-date">
+            Reportado hace 4 horas
+          </p>
+
+          <button>
+            Ver reporte
+          </button>
+        </div>
+
+      </article>
+
+    </div>
+
+  </section>
+
+</div>
