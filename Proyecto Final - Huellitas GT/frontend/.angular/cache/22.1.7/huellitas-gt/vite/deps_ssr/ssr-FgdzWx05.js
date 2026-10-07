@@ -1,8 +1,11 @@
 import { r as __toESM } from "./rolldown-runtime-C7HZzL1F.js";
 import { Bn as LOCALE_ID, Dc as InjectionToken, Dl as ɵɵdefineInjectable, E as annotateForHydration, Ec as INTERNAL_APPLICATION_ERROR_HANDLER, F as createPlatformFactory, Fn as Injectable, Kc as TransferState, Ki as setDocument, Li as resetCompiledComponents, Mn as IS_HYDRATION_DOM_REUSE_ENABLED, Oc as Injector, Ol as ɵɵdefineInjector, Pn as Inject, Rc as PLATFORM_ID, Rl as require_cjs, Wc as RuntimeError, Wi as setClassMetadata, b as REQUEST_CONTEXT, bl as runInInjectionContext, cl as inject, cr as SSR_CONTENT_INTEGRITY_MARKER, dc as APP_ID, fn as Console$1, hc as DOCUMENT, ht as stopMeasuring, ir as Renderer2, jl as ɵɵinject, ml as makeEnvironmentProviders, mr as TESTABILITY, mt as startMeasuring, on as Compiler, ot as platformCore, pc as CSP_NONCE, qn as NgModule, qr as createEnvironmentInjector, ro as ɵɵdefineNgModule, s as ENABLE_ROOT_COMPONENT_BOOTSTRAP, tn as ApplicationRef, vl as provideEnvironmentInitializer, x as RESPONSE_INIT, y as REQUEST, yc as EnvironmentInjector, yr as Testability, zc as PLATFORM_INITIALIZER } from "./core-DEfZ8H2V.js";
-import { A as EVENT_MANAGER_PLUGINS, B as XhrFactory, L as NullViewportScroller, M as EventManagerPlugin, R as PLATFORM_SERVER_ID, S as BrowserModule, W as APP_BASE_HREF, X as getDOM, Y as PlatformLocation, Z as setRootDomAdapter, b as BrowserDomAdapter, v as HTTP_FETCH_MAX_RESPONSE_SIZE, y as HTTP_ROOT_INTERCEPTOR_FNS, z as ViewportScroller } from "./platform-browser-CrXAASj8.js";
+import { H as XhrFactory, a as HTTP_FETCH_MAX_RESPONSE_SIZE, s as HTTP_ROOT_INTERCEPTOR_FNS } from "./http-BT-FcZGy.js";
+import { a as setRootDomAdapter, i as getDOM, r as PlatformLocation } from "./_platform_location-chunk-DOzG9Dv9.js";
+import { a as ViewportScroller, c as APP_BASE_HREF, i as PLATFORM_SERVER_ID, n as NullViewportScroller } from "./common-CHymJlm4.js";
+import { A as EventManagerPlugin, O as EVENT_MANAGER_PLUGINS, b as BrowserModule, v as BrowserDomAdapter } from "./platform-browser-BGYNi0VX.js";
 import { t as index } from "./bundled-domino-DgHL1BAn.js";
-import { Dt as loadChildren, ct as Router, j as ActivatedRoute, tt as ROUTES } from "./router-Fa72wSEs.js";
+import { Dt as loadChildren, ct as Router, j as ActivatedRoute, tt as ROUTES } from "./router-D6qZjU8O.js";
 //#region node_modules/.pnpm/@angular+ssr@22.1.7_@angula_73ae248124a6a6aae3e9a3b888552755/node_modules/@angular/ssr/fesm2022/_validation-chunk.mjs
 var TRUST_ALL_PROXY_HEADERS = "*";
 var HOST_HEADERS_TO_VALIDATE = ["host", "x-forwarded-host"];

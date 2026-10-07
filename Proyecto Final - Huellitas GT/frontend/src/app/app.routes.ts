@@ -14,6 +14,13 @@ export const routes: Routes = [
       import('./pages/mascotas/mascotas').then(m => m.Mascotas)
   },
   {
+    path: 'mascotas/:id',
+    title: 'Perfil de mascota - Huellitas GT',
+    loadComponent: () =>
+      import('./pages/perfil-mascota/perfil-mascota')
+        .then(m => m.PerfilMascota)
+  },
+  {
     path: 'reportes',
     title: 'Reportes - Huellitas GT',
     loadComponent: () =>
@@ -24,5 +31,11 @@ export const routes: Routes = [
     title: 'Nosotros - Huellitas GT',
     loadComponent: () =>
       import('./pages/nosotros/nosotros').then(m => m.Nosotros)
+  },
+  {
+    path: 'login',
+    title: 'Iniciar sesión - Huellitas GT',
+    loadComponent: () =>
+      import('./pages/login/login').then(m => m.Login)
   }
 ];

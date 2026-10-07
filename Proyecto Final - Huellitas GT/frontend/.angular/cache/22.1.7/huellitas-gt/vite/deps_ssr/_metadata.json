@@ -1,75 +1,99 @@
 {
-  "hash": "a918a608",
-  "configHash": "854c04ab",
+  "hash": "8c83428e",
+  "configHash": "8c6aa2a7",
   "lockfileHash": "427a2f1e",
-  "browserHash": "6ace7243",
+  "browserHash": "db30ff96",
   "optimized": {
+    "@angular/common/http": {
+      "src": "../../../../../../node_modules/.pnpm/@angular+common@22.1.5_@ang_4e0cc478d725a4c2fd2b7873343f8615/node_modules/@angular/common/fesm2022/http.mjs",
+      "file": "@angular_common_http.js",
+      "fileHash": "067300ff",
+      "needsInterop": false
+    },
     "@angular/core": {
       "src": "../../../../../../node_modules/.pnpm/@angular+core@22.1.5_@angular+compiler@22.1.5_rxjs@7.8.2/node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "e92ac5e7",
+      "fileHash": "02e00be5",
+      "needsInterop": false
+    },
+    "@angular/forms": {
+      "src": "../../../../../../node_modules/.pnpm/@angular+forms@22.1.5_@angu_6c4e67ab5df13604cb361f8b09ec16fa/node_modules/@angular/forms/fesm2022/forms.mjs",
+      "file": "@angular_forms.js",
+      "fileHash": "fa8637ce",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../../node_modules/.pnpm/@angular+platform-browser@2_cc1d766d25a6c122c6e40b771c1a643b/node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "94937c4b",
+      "fileHash": "38caf311",
       "needsInterop": false
     },
     "@angular/platform-server/init": {
       "src": "../../../../../../node_modules/.pnpm/@angular+platform-server@22_f505387afeb8ab5219ea362840c8399f/node_modules/@angular/platform-server/fesm2022/init.mjs",
       "file": "@angular_platform-server_init.js",
-      "fileHash": "a044d5b8",
+      "fileHash": "9e207772",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../../node_modules/.pnpm/@angular+router@22.1.5_@ang_777f3fd13e7ffff2f90bc0581d46f09b/node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-      "fileHash": "86c11299",
+      "fileHash": "aa3c0ce8",
       "needsInterop": false
     },
     "@angular/ssr": {
       "src": "../../../../../../node_modules/.pnpm/@angular+ssr@22.1.7_@angula_73ae248124a6a6aae3e9a3b888552755/node_modules/@angular/ssr/fesm2022/ssr.mjs",
       "file": "@angular_ssr.js",
-      "fileHash": "f4ab7422",
+      "fileHash": "86cac254",
       "needsInterop": false
     },
     "@angular/ssr/node": {
       "src": "../../../../../../node_modules/.pnpm/@angular+ssr@22.1.7_@angula_73ae248124a6a6aae3e9a3b888552755/node_modules/@angular/ssr/fesm2022/node.mjs",
       "file": "@angular_ssr_node.js",
-      "fileHash": "5c1ef8e1",
+      "fileHash": "9eafe12b",
       "needsInterop": false
     },
     "express": {
       "src": "../../../../../../node_modules/.pnpm/express@5.2.1/node_modules/express/index.js",
       "file": "express.js",
-      "fileHash": "20069cdc",
+      "fileHash": "2eb18500",
       "needsInterop": true
     }
   },
   "chunks": {
+    "_platform_location-chunk-DOzG9Dv9": {
+      "file": "_platform_location-chunk-DOzG9Dv9.js",
+      "isDynamicEntry": false
+    },
     "bundled-domino-DgHL1BAn": {
       "file": "bundled-domino-DgHL1BAn.js",
+      "isDynamicEntry": false
+    },
+    "common-CHymJlm4": {
+      "file": "common-CHymJlm4.js",
       "isDynamicEntry": false
     },
     "core-DEfZ8H2V": {
       "file": "core-DEfZ8H2V.js",
       "isDynamicEntry": false
     },
-    "platform-browser-CrXAASj8": {
-      "file": "platform-browser-CrXAASj8.js",
+    "http-BT-FcZGy": {
+      "file": "http-BT-FcZGy.js",
+      "isDynamicEntry": false
+    },
+    "platform-browser-BGYNi0VX": {
+      "file": "platform-browser-BGYNi0VX.js",
       "isDynamicEntry": false
     },
     "rolldown-runtime-C7HZzL1F": {
       "file": "rolldown-runtime-C7HZzL1F.js",
       "isDynamicEntry": false
     },
-    "router-Fa72wSEs": {
-      "file": "router-Fa72wSEs.js",
+    "router-D6qZjU8O": {
+      "file": "router-D6qZjU8O.js",
       "isDynamicEntry": false
     },
-    "ssr-CX54bMzZ": {
-      "file": "ssr-CX54bMzZ.js",
+    "ssr-FgdzWx05": {
+      "file": "ssr-FgdzWx05.js",
       "isDynamicEntry": false
     },
     "xhr2-BYNf1wUa": {

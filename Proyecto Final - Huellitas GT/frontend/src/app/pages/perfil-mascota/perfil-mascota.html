@@ -1,0 +1,127 @@
+<header class="navbar">
+  <div class="logo">
+    🐾 <span>Huellitas GT</span>
+  </div>
+
+  <nav>
+    <a routerLink="/">Inicio</a>
+    <a routerLink="/mascotas">Mascotas</a>
+    <a routerLink="/reportes">Reportes</a>
+    <a routerLink="/nosotros">Nosotros</a>
+  </nav>
+
+  <button class="btn-login">
+    Iniciar sesión
+  </button>
+</header>
+
+<main class="perfil-page">
+
+  @if (cargando) {
+    <section class="estado">
+      <p>Cargando información de la mascota...</p>
+    </section>
+  }
+
+  @if (error) {
+    <section class="estado error">
+      <h2>Ocurrió un problema</h2>
+
+      <p>{{ error }}</p>
+
+      <a routerLink="/mascotas" class="btn-volver">
+        Volver a mascotas
+      </a>
+    </section>
+  }
+
+  @if (mascota) {
+    <section class="perfil-container">
+
+      <a routerLink="/mascotas" class="volver">
+        ← Volver a mascotas
+      </a>
+
+      <div class="perfil-card">
+
+        <div class="perfil-imagen">
+          {{ mascota.especie === 'Gato' ? '🐱' : '🐶' }}
+        </div>
+
+        <div class="perfil-info">
+
+          <span class="estado-adopcion">
+            {{ mascota.estado_adopcion }}
+          </span>
+
+          <h1>{{ mascota.nombre }}</h1>
+
+          <p class="raza">
+            {{ mascota.especie }}
+
+            @if (mascota.raza) {
+              · {{ mascota.raza }}
+            }
+          </p>
+
+          <div class="datos">
+
+            <div class="dato">
+              <span>Edad</span>
+
+              <strong>
+                {{ mascota.edad_valor }}
+                {{ mascota.unidad_edad.toLowerCase() }}
+              </strong>
+            </div>
+
+            <div class="dato">
+              <span>Sexo</span>
+
+              <strong>{{ mascota.sexo }}</strong>
+            </div>
+
+            <div class="dato">
+              <span>Tamaño</span>
+
+              <strong>{{ mascota.tamano }}</strong>
+            </div>
+
+            <div class="dato">
+              <span>Ubicación</span>
+
+              <strong>{{ mascota.ubicacion }}</strong>
+            </div>
+
+          </div>
+
+          <div class="descripcion">
+
+            <h2>Sobre {{ mascota.nombre }}</h2>
+
+            <p>
+              {{ mascota.descripcion || 'Esta mascota todavía no tiene una descripción.' }}
+            </p>
+
+          </div>
+
+          <div class="refugio">
+
+            <span>Refugio responsable</span>
+
+            <strong>{{ mascota.refugio }}</strong>
+
+          </div>
+
+          <button class="btn-adoptar">
+            Quiero adoptar a {{ mascota.nombre }}
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+  }
+
+</main>

@@ -4,8 +4,10 @@ import dotenv from 'dotenv';
 import { db } from './config/database.js';
 import rolesRoutes from './routes/roles.routes.js';
 import usuariosRoutes from './routes/usuarios.routes.js';
-
+import authRoutes from './routes/auth.routes.js';
+import mascotasRoutes from './routes/mascotas.routes.js';
 dotenv.config();
+import refugiosRoutes from './routes/refugios.routes.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -43,6 +45,15 @@ app.use('/api/roles', rolesRoutes);
 
 // Rutas relacionadas con los usuarios del sistema.
 app.use('/api/usuarios', usuariosRoutes);
+
+// Rutas relacionadas con autenticación.
+app.use('/api/auth', authRoutes);
+
+// Rutas relacionadas con las mascotas.
+app.use('/api/mascotas', mascotasRoutes);
+
+// Rutas relacionadas con los refugios.
+app.use('/api/refugios', refugiosRoutes);
 
 app.listen(PORT, () => {
   console.log(`Servidor ejecutándose en http://localhost:${PORT}`);
